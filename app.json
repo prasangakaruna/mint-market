@@ -1,0 +1,49 @@
+{
+  "expo": {
+    "name": "Mint Market",
+    "slug": "mint-market-react-native",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FFFFFF"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mintmarket.app",
+      "statusBar": {
+        "style": "dark-content",
+        "backgroundColor": "#FFFFFF"
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "package": "com.mintmarket.app",
+      "statusBar": {
+        "backgroundColor": "#FFFFFF",
+        "barStyle": "dark-content"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "plugins": [
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "7585b029-9d7b-45ef-8366-7970f591d3f0"
+      }
+    },
+    "owner": "prasangakaruna"
+  }
+}
