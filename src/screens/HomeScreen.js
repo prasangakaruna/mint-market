@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-// Using FlatList for carousel instead of react-native-snap-carousel
+import { LinearGradient } from 'expo-linear-gradient';
 import { theme, spacing, fontSize } from '../theme/theme';
 import SearchBar from '../components/SearchBar';
 import CategoryCard from '../components/CategoryCard';
@@ -22,10 +22,17 @@ const { width: screenWidth } = Dimensions.get('window');
 
 const HomeScreen = ({ navigation }) => {
   const [searchQuery, setSearchQuery] = useState('');
-  const isDark = false; // Can be made dynamic with context
+  const isDark = false;
 
   const featuredListings = mockListings.filter(listing => listing.featured);
   const recommendedListings = mockListings.slice(0, 6);
+
+  const quickActions = [
+    { label: 'Post Ad', icon: 'plus-circle', color: theme.colors.primary, onPress: () => navigation.navigate('PostAd') },
+    { label: 'Services', icon: 'handshake', color: '#F59E0B', onPress: () => navigation.navigate('CategoryListing', { category: { name: 'Services' } }) },
+    { label: 'Jobs', icon: 'briefcase', color: '#10B981', onPress: () => navigation.navigate('CategoryListing', { category: { name: 'Jobs' } }) },
+    { label: 'Real Estate', icon: 'home', color: '#8B5CF6', onPress: () => navigation.navigate('CategoryListing', { category: { name: 'Real Estate' } }) },
+  ];
 
   const handleItemPress = (item) => {
     if (item.category === 'Services') {
@@ -55,11 +62,17 @@ const HomeScreen = ({ navigation }) => {
   };
 
   const handleSearchPress = () => {
-    // Navigate to Search tab - use jumpTo for tab navigation
     const parent = navigation.getParent();
     if (parent) {
       parent.navigate('Search');
     }
+  };
+
+  const getGreeting = () => {
+    const hour = new Date().getHours();
+    if (hour < 12) return 'Good morning';
+    if (hour < 18) return 'Good afternoon';
+    return 'Good evening';
   };
 
   return (
@@ -69,43 +82,75 @@ const HomeScreen = ({ navigation }) => {
         contentContainerStyle={styles.scrollContent}
         showsVerticalScrollIndicator={false}
       >
-        {/* Header */}
-        <View style={styles.headerContainer}>
-          <View style={styles.logoContainer}>
-            <MintLogo width={100} height={45} color={theme.colors.primary} />
-          </View>
-          <View style={styles.header}>
-            <View>
-              <Text style={[styles.greeting, { color: theme.colors.textSecondary }]}>
-                Good morning
-              </Text>
-              <Text style={[styles.title, { color: theme.colors.text }]}>
-                Find your perfect match
-              </Text>
+        {/* Compact Header */}
+        <LinearGradient
+          colors={[theme.colors.primary, theme.colors.primaryDark]}
+          start={{ x: 0, y: 0 }}
+          end={{ x: 1, y: 1 }}
+          style={styles.headerGradient}
+        >
+          <View style={styles.headerContainer}>
+            <View style={styles.headerTop}>
+              <MintLogo width={80} height={36} color="#FFFFFF" />
+              <TouchableOpacity style={styles.notificationButton}>
+                <MaterialCommunityIcons
+                  name="bell-outline"
+                  size={20}
+                  color="#FFFFFF"
+                />
+                <View style={styles.notificationBadge}>
+                  <Text style={styles.notificationBadgeText}>3</Text>
+                </View>
+              </TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.notificationButton}>
-              <MaterialCommunityIcons
-                name="bell-outline"
-                size={24}
-                color={theme.colors.text}
-              />
-            </TouchableOpacity>
+            <View style={styles.headerContent}>
+              <Text style={styles.greeting}>{getGreeting()}</Text>
+              <Text style={styles.title}>Find your perfect match</Text>
+            </View>
           </View>
-        </View>
+        </LinearGradient>
 
         {/* Search Bar */}
-        <SearchBar
-          placeholder="Search products, jobs, services..."
-          onPress={handleSearchPress}
-          isDark={isDark}
-        />
+        <View style={styles.searchContainer}>
+          <SearchBar
+            placeholder="Search products, jobs, services..."
+            onPress={handleSearchPress}
+            isDark={isDark}
+          />
+        </View>
 
-        {/* Category Shortcuts */}
+        {/* Quick Actions - Compact */}
+        <View style={styles.quickActionsContainer}>
+          {quickActions.map((action, index) => (
+            <TouchableOpacity
+              key={index}
+              style={[styles.quickActionCard, { backgroundColor: theme.colors.surface }]}
+              onPress={action.onPress}
+              activeOpacity={0.8}
+            >
+              <View style={[styles.quickActionIcon, { backgroundColor: action.color + '15' }]}>
+                <MaterialCommunityIcons
+                  name={action.icon}
+                  size={22}
+                  color={action.color}
+                />
+              </View>
+              <Text style={[styles.quickActionLabel, { color: theme.colors.text }]} numberOfLines={1}>
+                {action.label}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </View>
+
+        {/* Categories - Compact */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
             <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
               Categories
             </Text>
+            <TouchableOpacity onPress={() => navigation.navigate('CategoryListing', { category: { name: 'All' } })}>
+              <Text style={[styles.seeAll, { color: theme.colors.primary }]}>All</Text>
+            </TouchableOpacity>
           </View>
           <FlatList
             data={categories}
@@ -123,17 +168,23 @@ const HomeScreen = ({ navigation }) => {
           />
         </View>
 
-        {/* Featured Listings Carousel */}
+        {/* Featured Listings - Compact */}
         {featuredListings.length > 0 && (
           <View style={styles.section}>
             <View style={styles.sectionHeader}>
-              <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
-                Featured Listings
-              </Text>
-              <TouchableOpacity onPress={() => navigation.navigate('CategoryListing', { category: { name: 'All' } })}>
-                <Text style={[styles.seeAll, { color: theme.colors.primary }]}>
-                  See All
+              <View style={styles.sectionTitleRow}>
+                <MaterialCommunityIcons
+                  name="star"
+                  size={18}
+                  color={theme.colors.amber}
+                  style={styles.sectionIcon}
+                />
+                <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
+                  Featured
                 </Text>
+              </View>
+              <TouchableOpacity onPress={() => navigation.navigate('CategoryListing', { category: { name: 'All' } })}>
+                <Text style={[styles.seeAll, { color: theme.colors.primary }]}>All</Text>
               </TouchableOpacity>
             </View>
             <FlatList
@@ -143,23 +194,29 @@ const HomeScreen = ({ navigation }) => {
               showsHorizontalScrollIndicator={false}
               keyExtractor={(item) => item.id}
               contentContainerStyle={styles.carousel}
-              snapToInterval={screenWidth * 0.85 + spacing.md}
+              snapToInterval={screenWidth * 0.8 + spacing.sm}
               decelerationRate="fast"
               snapToAlignment="start"
             />
           </View>
         )}
 
-        {/* Recommended Items Grid */}
+        {/* Recommended Items Grid - Compact */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
-            <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
-              Recommended for You
-            </Text>
-            <TouchableOpacity onPress={() => navigation.navigate('CategoryListing', { category: { name: 'All' } })}>
-              <Text style={[styles.seeAll, { color: theme.colors.primary }]}>
-                See All
+            <View style={styles.sectionTitleRow}>
+              <MaterialCommunityIcons
+                name="thumb-up"
+                size={18}
+                color={theme.colors.primary}
+                style={styles.sectionIcon}
+              />
+              <Text style={[styles.sectionTitle, { color: theme.colors.text }]}>
+                Recommended
               </Text>
+            </View>
+            <TouchableOpacity onPress={() => navigation.navigate('CategoryListing', { category: { name: 'All' } })}>
+              <Text style={[styles.seeAll, { color: theme.colors.primary }]}>All</Text>
             </TouchableOpacity>
           </View>
           <View style={styles.grid}>
@@ -188,48 +245,106 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    paddingBottom: 100, // Space for floating tab bar
+    paddingBottom: 100,
+  },
+  // Compact Header
+  headerGradient: {
+    paddingTop: spacing.xs,
+    paddingBottom: spacing.md,
+    borderBottomLeftRadius: 20,
+    borderBottomRightRadius: 20,
   },
   headerContainer: {
     paddingHorizontal: spacing.md,
-    paddingTop: spacing.md,
   },
-  logoContainer: {
-    alignItems: 'center',
-    marginBottom: spacing.sm,
-  },
-  header: {
+  headerTop: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingBottom: spacing.sm,
+    marginBottom: spacing.sm,
+  },
+  notificationButton: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: 'rgba(255, 255, 255, 0.2)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+  },
+  notificationBadge: {
+    position: 'absolute',
+    top: 6,
+    right: 6,
+    backgroundColor: '#EF4444',
+    borderRadius: 8,
+    minWidth: 16,
+    height: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 3,
+  },
+  notificationBadgeText: {
+    color: '#FFFFFF',
+    fontSize: 9,
+    fontWeight: '700',
+  },
+  headerContent: {
+    marginTop: spacing.xs / 2,
   },
   greeting: {
     fontSize: fontSize.xs,
+    color: 'rgba(255, 255, 255, 0.9)',
     marginBottom: 2,
     fontWeight: '500',
-    opacity: 0.7,
   },
   title: {
     fontSize: fontSize.xl,
     fontWeight: '800',
-    letterSpacing: -0.5,
+    color: '#FFFFFF',
+    letterSpacing: -0.3,
   },
-  notificationButton: {
+  // Search
+  searchContainer: {
+    marginTop: -spacing.sm,
+    marginBottom: spacing.sm,
+    zIndex: 10,
+  },
+  // Quick Actions - Compact
+  quickActionsContainer: {
+    flexDirection: 'row',
+    paddingHorizontal: spacing.md,
+    marginBottom: spacing.md,
+    marginTop: spacing.xs,
+  },
+  quickActionCard: {
+    flex: 1,
+    padding: spacing.sm,
+    borderRadius: 12,
+    marginHorizontal: spacing.xs / 2,
+    alignItems: 'center',
+    shadowColor: theme.colors.shadow,
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.08,
+    shadowRadius: 4,
+    elevation: 2,
+  },
+  quickActionIcon: {
     width: 40,
     height: 40,
     borderRadius: 20,
-    backgroundColor: '#FFFFFF',
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: theme.colors.shadow,
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.1,
-    shadowRadius: 6,
-    elevation: 3,
+    marginBottom: spacing.xs / 2,
   },
+  quickActionLabel: {
+    fontSize: fontSize.xs,
+    fontWeight: '600',
+    textAlign: 'center',
+  },
+  // Sections - Compact
   section: {
-    marginTop: spacing.md,
+    marginBottom: spacing.md,
   },
   sectionHeader: {
     flexDirection: 'row',
@@ -238,29 +353,39 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.md,
     marginBottom: spacing.sm,
   },
+  sectionTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  sectionIcon: {
+    marginRight: spacing.xs / 2,
+  },
   sectionTitle: {
-    fontSize: fontSize.lg,
-    fontWeight: '800',
-    letterSpacing: -0.3,
+    fontSize: fontSize.md,
+    fontWeight: '700',
+    letterSpacing: -0.2,
   },
   seeAll: {
-    fontSize: fontSize.sm,
+    fontSize: fontSize.xs,
     fontWeight: '600',
   },
+  // Categories
   categoriesList: {
     paddingHorizontal: spacing.md,
   },
+  // Carousel - Compact
   carousel: {
     paddingLeft: spacing.md,
     paddingRight: spacing.md,
   },
   carouselItem: {
-    width: screenWidth * 0.85,
-    paddingRight: spacing.md,
+    width: screenWidth * 0.8,
+    paddingRight: spacing.sm,
   },
   carouselCard: {
     marginBottom: 0,
   },
+  // Grid - Compact
   grid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -269,7 +394,7 @@ const styles = StyleSheet.create({
   },
   gridItem: {
     width: (screenWidth - spacing.md * 3) / 2,
-    marginBottom: spacing.md,
+    marginBottom: spacing.sm,
   },
   gridCard: {
     marginBottom: 0,
@@ -277,4 +402,3 @@ const styles = StyleSheet.create({
 });
 
 export default HomeScreen;
-

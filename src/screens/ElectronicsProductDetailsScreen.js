@@ -678,22 +678,22 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    paddingBottom: spacing.xxl,
+    paddingBottom: spacing.xl,
   },
   // Header Image
   headerImageContainer: {
     width: screenWidth,
-    height: 400,
+    height: 300,
     position: 'relative',
     backgroundColor: theme.colors.backgroundSecondary,
   },
   imageSlider: {
     width: screenWidth,
-    height: 400,
+    height: 300,
   },
   sliderItem: {
     width: screenWidth,
-    height: 400,
+    height: 300,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: theme.colors.backgroundSecondary,
@@ -704,7 +704,7 @@ const styles = StyleSheet.create({
   },
   headerIcons: {
     position: 'absolute',
-    top: spacing.lg,
+    top: spacing.md,
     left: 0,
     right: 0,
     flexDirection: 'row',
@@ -717,17 +717,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   headerIconButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
     justifyContent: 'center',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
   },
   // Image Indicator
   imageIndicator: {
     position: 'absolute',
-    bottom: spacing.md,
+    bottom: spacing.sm,
     left: 0,
     right: 0,
     flexDirection: 'row',
@@ -736,94 +741,97 @@ const styles = StyleSheet.create({
     zIndex: 5,
   },
   indicatorDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
+    width: 5,
+    height: 5,
+    borderRadius: 2.5,
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    marginHorizontal: 3,
+    marginHorizontal: 2.5,
   },
   indicatorDotActive: {
     backgroundColor: theme.colors.primary,
-    width: 20,
+    width: 16,
   },
   // Content
   content: {
     padding: spacing.md,
+    paddingTop: spacing.sm,
     backgroundColor: theme.colors.background,
   },
   // Brand Row
   brandRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: spacing.sm,
+    marginBottom: spacing.xs,
     flexWrap: 'wrap',
+    marginTop: spacing.xs,
   },
   brandBadge: {
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.xs,
-    borderRadius: 20,
-    marginRight: spacing.sm,
-    marginBottom: spacing.xs,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 4,
+    borderRadius: 12,
+    marginRight: spacing.xs,
+    marginBottom: spacing.xs / 2,
   },
   brandText: {
-    fontSize: fontSize.sm,
+    fontSize: fontSize.xs,
     fontWeight: '600',
   },
   conditionBadge: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: spacing.sm,
-    paddingVertical: spacing.xs,
-    borderRadius: 20,
-    marginRight: spacing.sm,
-    marginBottom: spacing.xs,
+    paddingHorizontal: spacing.xs,
+    paddingVertical: 4,
+    borderRadius: 12,
+    marginRight: spacing.xs,
+    marginBottom: spacing.xs / 2,
   },
   conditionText: {
     fontSize: fontSize.xs,
     fontWeight: '600',
-    marginLeft: spacing.xs,
+    marginLeft: spacing.xs / 2,
   },
   // Product Name
   productName: {
-    fontSize: fontSize.xxl,
+    fontSize: fontSize.xl,
     fontWeight: '700',
-    marginBottom: spacing.sm,
+    marginBottom: spacing.xs / 2,
+    lineHeight: 28,
   },
   // Rating Row
   ratingRow: {
-    marginBottom: spacing.md,
+    marginBottom: spacing.sm,
   },
   ratingContainer: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   ratingText: {
-    fontSize: fontSize.md,
+    fontSize: fontSize.xs,
     fontWeight: '500',
   },
   // Price Card
   priceCard: {
-    padding: spacing.md,
-    borderRadius: theme.roundness,
-    marginBottom: spacing.md,
+    padding: spacing.sm,
+    borderRadius: 12,
+    marginBottom: spacing.sm,
   },
   priceRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: spacing.sm,
+    marginBottom: spacing.xs,
   },
   priceInfo: {
     flexDirection: 'row',
     alignItems: 'baseline',
   },
   price: {
-    fontSize: fontSize.xxl,
+    fontSize: fontSize.xl,
     fontWeight: '700',
-    marginRight: spacing.sm,
+    marginRight: spacing.xs,
   },
   originalPrice: {
-    fontSize: fontSize.lg,
+    fontSize: fontSize.md,
     textDecorationLine: 'line-through',
   },
   discountBadge: {
@@ -847,20 +855,20 @@ const styles = StyleSheet.create({
   // Quick Info
   quickInfoRow: {
     flexDirection: 'row',
-    marginBottom: spacing.lg,
+    marginBottom: spacing.md,
   },
   quickInfoCard: {
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    padding: spacing.md,
-    borderRadius: theme.roundness,
-    marginRight: spacing.md,
+    padding: spacing.sm,
+    borderRadius: 12,
+    marginRight: spacing.sm,
   },
   quickInfoText: {
-    fontSize: fontSize.sm,
+    fontSize: fontSize.xs,
     fontWeight: '600',
-    marginLeft: spacing.sm,
+    marginLeft: spacing.xs,
     flex: 1,
   },
   // Navigation Tabs
@@ -868,16 +876,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderBottomWidth: 1,
     borderBottomColor: theme.colors.border,
-    marginBottom: spacing.md,
+    marginBottom: spacing.sm,
+    marginTop: spacing.xs,
   },
   tab: {
     flex: 1,
-    paddingVertical: spacing.md,
+    paddingVertical: spacing.sm,
     alignItems: 'center',
     position: 'relative',
   },
   tabText: {
-    fontSize: fontSize.md,
+    fontSize: fontSize.sm,
+    fontWeight: '500',
   },
   tabIndicator: {
     position: 'absolute',
@@ -888,47 +898,47 @@ const styles = StyleSheet.create({
   },
   // Tab Content
   tabContent: {
-    marginTop: spacing.md,
+    marginTop: spacing.sm,
   },
   descriptionText: {
-    fontSize: fontSize.md,
-    lineHeight: 24,
+    fontSize: fontSize.sm,
+    lineHeight: 20,
   },
   // Specifications
   specsGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginHorizontal: -spacing.xs,
+    marginHorizontal: -spacing.xs / 2,
   },
   specItem: {
-    width: (screenWidth - spacing.md * 2 - spacing.xs * 4) / 2,
-    padding: spacing.md,
-    borderRadius: theme.roundness,
-    margin: spacing.xs,
+    width: (screenWidth - spacing.md * 2 - spacing.xs) / 2,
+    padding: spacing.sm,
+    borderRadius: 12,
+    margin: spacing.xs / 2,
     alignItems: 'center',
   },
   specLabel: {
-    fontSize: fontSize.sm,
-    marginTop: spacing.xs,
-    marginBottom: spacing.xs / 2,
+    fontSize: fontSize.xs,
+    marginTop: spacing.xs / 2,
+    marginBottom: 2,
   },
   specValue: {
-    fontSize: fontSize.md,
+    fontSize: fontSize.sm,
     fontWeight: '600',
   },
   // Sections
   section: {
-    marginTop: spacing.xl,
+    marginTop: spacing.lg,
   },
   sectionTitle: {
-    fontSize: fontSize.lg,
+    fontSize: fontSize.md,
     fontWeight: '700',
-    marginBottom: spacing.md,
+    marginBottom: spacing.sm,
   },
   // Seller Card
   sellerCard: {
-    padding: spacing.md,
-    borderRadius: theme.roundness,
+    padding: spacing.sm,
+    borderRadius: 12,
   },
   sellerHeader: {
     flexDirection: 'row',

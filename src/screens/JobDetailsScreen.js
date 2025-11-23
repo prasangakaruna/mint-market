@@ -620,12 +620,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    paddingBottom: spacing.xxl,
+    paddingBottom: spacing.xl,
   },
   // Header Image
   headerImageContainer: {
     width: screenWidth,
-    height: 200,
+    height: 180,
     position: 'relative',
   },
   headerImage: {
@@ -642,7 +642,7 @@ const styles = StyleSheet.create({
   },
   headerIcons: {
     position: 'absolute',
-    top: spacing.lg,
+    top: spacing.md,
     left: 0,
     right: 0,
     flexDirection: 'row',
@@ -655,31 +655,37 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   headerIconButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
     justifyContent: 'center',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 3,
   },
   // Content
   content: {
     padding: spacing.md,
+    paddingTop: spacing.sm,
     backgroundColor: theme.colors.background,
   },
   // Company Header
   companyHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: -30,
-    marginBottom: spacing.md,
+    marginTop: -24,
+    marginBottom: spacing.sm,
   },
   companyLogoContainer: {
-    width: 80,
-    height: 80,
+    width: 64,
+    height: 64,
     borderRadius: 12,
-    padding: spacing.xs,
-    marginRight: spacing.md,
+    padding: 3,
+    marginRight: spacing.sm,
     shadowColor: theme.colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -695,9 +701,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   companyName: {
-    fontSize: fontSize.lg,
+    fontSize: fontSize.md,
     fontWeight: '700',
-    marginBottom: spacing.xs,
+    marginBottom: spacing.xs / 2,
   },
   companyRating: {
     flexDirection: 'row',
@@ -709,9 +715,10 @@ const styles = StyleSheet.create({
   },
   // Job Title
   jobTitle: {
-    fontSize: fontSize.xxl,
+    fontSize: fontSize.xl,
     fontWeight: '700',
-    marginBottom: spacing.md,
+    marginBottom: spacing.sm,
+    lineHeight: 28,
   },
   // Job Meta
   jobMeta: {
@@ -749,16 +756,16 @@ const styles = StyleSheet.create({
   },
   // Sections
   section: {
-    marginBottom: spacing.xl,
+    marginBottom: spacing.lg,
   },
   sectionTitle: {
-    fontSize: fontSize.lg,
+    fontSize: fontSize.md,
     fontWeight: '700',
-    marginBottom: spacing.md,
+    marginBottom: spacing.sm,
   },
   descriptionText: {
-    fontSize: fontSize.md,
-    lineHeight: 24,
+    fontSize: fontSize.sm,
+    lineHeight: 20,
   },
   // List Items
   listItem: {
@@ -779,25 +786,25 @@ const styles = StyleSheet.create({
   benefitsGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginHorizontal: -spacing.xs,
+    marginHorizontal: -spacing.xs / 2,
   },
   benefitItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: spacing.md,
-    borderRadius: theme.roundness,
-    margin: spacing.xs,
-    width: (screenWidth - spacing.md * 2 - spacing.xs * 4) / 2,
+    padding: spacing.sm,
+    borderRadius: 12,
+    margin: spacing.xs / 2,
+    width: (screenWidth - spacing.md * 2 - spacing.xs) / 2,
   },
   benefitText: {
-    fontSize: fontSize.sm,
+    fontSize: fontSize.xs,
     flex: 1,
-    marginLeft: spacing.sm,
+    marginLeft: spacing.xs,
   },
   // Company Card
   companyCard: {
-    padding: spacing.md,
-    borderRadius: theme.roundness,
+    padding: spacing.sm,
+    borderRadius: 12,
   },
   companyDetailRow: {
     flexDirection: 'row',

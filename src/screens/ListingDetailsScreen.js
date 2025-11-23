@@ -579,30 +579,30 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    paddingBottom: spacing.xxl,
+    paddingBottom: spacing.xl,
   },
   // Main Image Container
   imageContainer: {
     width: screenWidth,
-    height: 400,
+    height: 280,
     position: 'relative',
   },
   imageSlider: {
     width: screenWidth,
-    height: 400,
+    height: 280,
   },
   sliderItem: {
     width: screenWidth,
-    height: 400,
+    height: 280,
   },
   mainImage: {
     width: screenWidth,
-    height: 400,
+    height: 280,
   },
   // Header Icons
   headerIcons: {
     position: 'absolute',
-    top: spacing.lg,
+    top: spacing.md,
     left: 0,
     right: 0,
     flexDirection: 'row',
@@ -615,17 +615,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   headerIconButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
     justifyContent: 'center',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 3,
   },
   // Thumbnail Gallery
   thumbnailContainer: {
     position: 'absolute',
-    bottom: spacing.md,
+    bottom: spacing.sm,
     left: 0,
     right: 0,
     paddingHorizontal: spacing.md,
@@ -634,10 +639,10 @@ const styles = StyleSheet.create({
     paddingRight: spacing.md,
   },
   thumbnailItem: {
-    width: 80,
-    height: 80,
-    borderRadius: 12,
-    marginRight: spacing.sm,
+    width: 64,
+    height: 64,
+    borderRadius: 8,
+    marginRight: spacing.xs,
     overflow: 'hidden',
     borderWidth: 2,
     borderColor: 'transparent',
@@ -650,10 +655,10 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   thumbnailMore: {
-    width: 80,
-    height: 80,
-    borderRadius: 12,
-    marginRight: spacing.sm,
+    width: 64,
+    height: 64,
+    borderRadius: 8,
+    marginRight: spacing.xs,
     overflow: 'hidden',
     position: 'relative',
   },
@@ -676,7 +681,7 @@ const styles = StyleSheet.create({
   // Image Indicator
   imageIndicator: {
     position: 'absolute',
-    top: spacing.xl + 40,
+    top: spacing.md + 36,
     left: 0,
     right: 0,
     flexDirection: 'row',
@@ -685,19 +690,20 @@ const styles = StyleSheet.create({
     zIndex: 5,
   },
   indicatorDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
+    width: 5,
+    height: 5,
+    borderRadius: 2.5,
     backgroundColor: 'rgba(255, 255, 255, 0.5)',
-    marginHorizontal: 3,
+    marginHorizontal: 2.5,
   },
   indicatorDotActive: {
     backgroundColor: '#FFFFFF',
-    width: 20,
+    width: 16,
   },
   // Content Section
   content: {
     padding: spacing.md,
+    paddingTop: spacing.sm,
     backgroundColor: '#FFFFFF',
   },
   // Rating Row
@@ -705,57 +711,60 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginBottom: spacing.sm,
+    marginBottom: spacing.xs,
+    marginTop: spacing.xs,
   },
   ratingContainer: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   ratingText: {
-    fontSize: fontSize.sm,
+    fontSize: fontSize.xs,
     fontWeight: '500',
   },
   propertyTypeTag: {
-    paddingHorizontal: spacing.md,
-    paddingVertical: spacing.xs,
-    borderRadius: 20,
+    paddingHorizontal: spacing.sm,
+    paddingVertical: 4,
+    borderRadius: 12,
   },
   propertyTypeText: {
-    fontSize: fontSize.sm,
+    fontSize: fontSize.xs,
     fontWeight: '600',
   },
   // Property Name
   propertyName: {
-    fontSize: fontSize.xxl,
+    fontSize: fontSize.xl,
     fontWeight: '700',
-    marginBottom: spacing.xs,
+    marginBottom: spacing.xs / 2,
+    lineHeight: 28,
   },
   // Address
   address: {
-    fontSize: fontSize.md,
-    marginBottom: spacing.md,
-    color: theme.colors.text,
+    fontSize: fontSize.sm,
+    marginBottom: spacing.sm,
+    color: theme.colors.textSecondary,
   },
   // Property Details
   propertyDetailsCard: {
-    borderRadius: theme.roundness,
-    padding: spacing.md,
-    marginBottom: spacing.lg,
+    borderRadius: 12,
+    padding: spacing.sm,
+    marginBottom: spacing.md,
+    backgroundColor: theme.colors.backgroundSecondary,
   },
   propertyDetailsGrid: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    marginBottom: spacing.md,
+    marginBottom: spacing.sm,
   },
   propertyDetailItem: {
     alignItems: 'center',
     flex: 1,
   },
   propertyDetailValue: {
-    fontSize: fontSize.lg,
+    fontSize: fontSize.md,
     fontWeight: '700',
-    marginTop: spacing.xs,
-    marginBottom: spacing.xs / 2,
+    marginTop: spacing.xs / 2,
+    marginBottom: 2,
   },
   propertyDetailLabel: {
     fontSize: fontSize.xs,
@@ -764,7 +773,7 @@ const styles = StyleSheet.create({
   additionalDetailsRow: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    paddingTop: spacing.md,
+    paddingTop: spacing.sm,
     borderTopWidth: 1,
     borderTopColor: theme.colors.border,
   },
@@ -778,26 +787,26 @@ const styles = StyleSheet.create({
   },
   // Details Section
   detailsSection: {
-    marginTop: spacing.lg,
+    marginTop: spacing.md,
   },
   detailsSectionTitle: {
-    fontSize: fontSize.lg,
+    fontSize: fontSize.md,
     fontWeight: '700',
-    marginBottom: spacing.md,
+    marginBottom: spacing.sm,
   },
   detailRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: spacing.md,
-    paddingVertical: spacing.sm,
+    marginBottom: spacing.sm,
+    paddingVertical: spacing.xs,
   },
   detailLabel: {
-    fontSize: fontSize.md,
-    marginLeft: spacing.sm,
+    fontSize: fontSize.sm,
+    marginLeft: spacing.xs,
     flex: 1,
   },
   detailValue: {
-    fontSize: fontSize.md,
+    fontSize: fontSize.sm,
     fontWeight: '600',
     flex: 2,
   },
@@ -806,16 +815,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     borderBottomWidth: 1,
     borderBottomColor: theme.colors.border,
-    marginBottom: spacing.md,
+    marginBottom: spacing.sm,
+    marginTop: spacing.xs,
   },
   tab: {
     flex: 1,
-    paddingVertical: spacing.md,
+    paddingVertical: spacing.sm,
     alignItems: 'center',
     position: 'relative',
   },
   tabText: {
-    fontSize: fontSize.md,
+    fontSize: fontSize.sm,
+    fontWeight: '500',
   },
   tabIndicator: {
     position: 'absolute',
@@ -826,27 +837,27 @@ const styles = StyleSheet.create({
   },
   // Tab Content
   tabContent: {
-    marginTop: spacing.md,
+    marginTop: spacing.sm,
   },
   descriptionText: {
-    fontSize: fontSize.md,
-    lineHeight: 24,
+    fontSize: fontSize.sm,
+    lineHeight: 20,
   },
   galleryTitle: {
-    fontSize: fontSize.lg,
+    fontSize: fontSize.md,
     fontWeight: '700',
-    marginBottom: spacing.md,
+    marginBottom: spacing.sm,
   },
   galleryGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginHorizontal: -spacing.xs,
+    marginHorizontal: -spacing.xs / 2,
   },
   galleryItem: {
-    width: (screenWidth - spacing.md * 2 - spacing.xs * 2) / 2,
-    height: (screenWidth - spacing.md * 2 - spacing.xs * 2) / 2,
-    margin: spacing.xs,
-    borderRadius: 12,
+    width: (screenWidth - spacing.md * 2 - spacing.xs) / 2,
+    height: (screenWidth - spacing.md * 2 - spacing.xs) / 2.5,
+    margin: spacing.xs / 2,
+    borderRadius: 8,
     overflow: 'hidden',
   },
   galleryImage: {
@@ -855,12 +866,12 @@ const styles = StyleSheet.create({
   },
   // Section Styles
   section: {
-    marginTop: spacing.xl,
+    marginTop: spacing.lg,
   },
   sectionTitle: {
-    fontSize: fontSize.lg,
+    fontSize: fontSize.md,
     fontWeight: '700',
-    marginBottom: spacing.md,
+    marginBottom: spacing.sm,
   },
   similarList: {
     paddingRight: spacing.md,

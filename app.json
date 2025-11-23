@@ -17,9 +17,9 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.mintmarket.app",
-      "statusBar": {
-        "style": "dark-content",
-        "backgroundColor": "#FFFFFF"
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
+        "UIStatusBarStyle": "UIStatusBarStyleDarkContent"
       }
     },
     "android": {
@@ -27,11 +27,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.mintmarket.app",
-      "statusBar": {
-        "backgroundColor": "#FFFFFF",
-        "barStyle": "dark-content"
-      }
+      "package": "com.mintmarket.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"

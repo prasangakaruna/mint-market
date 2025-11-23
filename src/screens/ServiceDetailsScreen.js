@@ -756,29 +756,29 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   scrollContent: {
-    paddingBottom: spacing.xxl,
+    paddingBottom: spacing.xl,
   },
   // Header Image
   headerImageContainer: {
     width: screenWidth,
-    height: 300,
+    height: 240,
     position: 'relative',
   },
   imageSlider: {
     width: screenWidth,
-    height: 300,
+    height: 240,
   },
   sliderItem: {
     width: screenWidth,
-    height: 300,
+    height: 240,
   },
   headerImage: {
     width: screenWidth,
-    height: 300,
+    height: 240,
   },
   headerIcons: {
     position: 'absolute',
-    top: spacing.lg,
+    top: spacing.md,
     left: 0,
     right: 0,
     flexDirection: 'row',
@@ -791,17 +791,22 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   headerIconButton: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
     justifyContent: 'center',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 3,
   },
   // Image Indicator
   imageIndicator: {
     position: 'absolute',
-    bottom: spacing.md,
+    bottom: spacing.sm,
     left: 0,
     right: 0,
     flexDirection: 'row',
@@ -810,34 +815,35 @@ const styles = StyleSheet.create({
     zIndex: 5,
   },
   indicatorDot: {
-    width: 6,
-    height: 6,
-    borderRadius: 3,
+    width: 5,
+    height: 5,
+    borderRadius: 2.5,
     backgroundColor: 'rgba(255, 255, 255, 0.5)',
-    marginHorizontal: 3,
+    marginHorizontal: 2.5,
   },
   indicatorDotActive: {
     backgroundColor: '#FFFFFF',
-    width: 20,
+    width: 16,
   },
   // Content
   content: {
     padding: spacing.md,
+    paddingTop: spacing.sm,
     backgroundColor: theme.colors.background,
   },
   // Provider Header
   providerHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: -30,
-    marginBottom: spacing.md,
+    marginTop: -24,
+    marginBottom: spacing.sm,
   },
   providerAvatarContainer: {
-    width: 80,
-    height: 80,
-    borderRadius: 40,
-    padding: spacing.xs,
-    marginRight: spacing.md,
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    padding: 3,
+    marginRight: spacing.sm,
     shadowColor: theme.colors.shadow,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
@@ -848,7 +854,7 @@ const styles = StyleSheet.create({
   providerAvatar: {
     width: '100%',
     height: '100%',
-    borderRadius: 36,
+    borderRadius: 29,
   },
   verifiedBadge: {
     position: 'absolute',
@@ -862,9 +868,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   providerName: {
-    fontSize: fontSize.lg,
+    fontSize: fontSize.md,
     fontWeight: '700',
-    marginBottom: spacing.xs,
+    marginBottom: spacing.xs / 2,
   },
   providerRating: {
     flexDirection: 'row',
@@ -876,9 +882,10 @@ const styles = StyleSheet.create({
   },
   // Service Title
   serviceTitle: {
-    fontSize: fontSize.xxl,
+    fontSize: fontSize.xl,
     fontWeight: '700',
-    marginBottom: spacing.md,
+    marginBottom: spacing.sm,
+    lineHeight: 28,
   },
   // Service Meta
   serviceMeta: {
@@ -917,41 +924,41 @@ const styles = StyleSheet.create({
   },
   // Sections
   section: {
-    marginBottom: spacing.xl,
+    marginBottom: spacing.lg,
   },
   sectionTitle: {
-    fontSize: fontSize.lg,
+    fontSize: fontSize.md,
     fontWeight: '700',
-    marginBottom: spacing.md,
+    marginBottom: spacing.sm,
   },
   descriptionText: {
-    fontSize: fontSize.md,
-    lineHeight: 24,
+    fontSize: fontSize.sm,
+    lineHeight: 20,
   },
   // Features
   featuresGrid: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    marginHorizontal: -spacing.xs,
+    marginHorizontal: -spacing.xs / 2,
   },
   featureItem: {
     flexDirection: 'row',
     alignItems: 'center',
-    padding: spacing.md,
-    borderRadius: theme.roundness,
-    margin: spacing.xs,
-    width: (screenWidth - spacing.md * 2 - spacing.xs * 4) / 2,
+    padding: spacing.sm,
+    borderRadius: 12,
+    margin: spacing.xs / 2,
+    width: (screenWidth - spacing.md * 2 - spacing.xs) / 2,
   },
   featureText: {
-    fontSize: fontSize.sm,
-    marginLeft: spacing.sm,
+    fontSize: fontSize.xs,
+    marginLeft: spacing.xs,
     flex: 1,
   },
   // Packages
   packageCard: {
-    borderRadius: theme.roundness,
-    padding: spacing.md,
-    marginBottom: spacing.md,
+    borderRadius: 12,
+    padding: spacing.sm,
+    marginBottom: spacing.sm,
     position: 'relative',
   },
   popularBadge: {
